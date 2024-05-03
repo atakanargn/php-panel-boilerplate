@@ -149,10 +149,6 @@ INSERT INTO public.i18n_words (i18n_name,i18n_value,i18n_language)VALUES('404_no
 INSERT INTO public.i18n_words (i18n_name,i18n_value,i18n_language)VALUES('404_not_found_backtohome','Anasayfaya dön','tr');
 INSERT INTO public.i18n_words (i18n_name,i18n_value,i18n_language)VALUES('404_not_found_message','Ziyaret etmek istediğiniz sayfa mevcut değil!','tr');
 
-
-
-
-
 CREATE TABLE public.settings(
     st_id int GENERATED ALWAYS AS IDENTITY NOT NULL,
     st_name varchar NOT NULL,

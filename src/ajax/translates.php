@@ -41,16 +41,65 @@ switch ($method) {
             } else {
                 echo json_encode(["error" => (string) $e]);
             }
-
         }
-
         break;
     case "PUT":
-
+        $json_data = file_get_contents('php://input');
+        $data = json_decode($json_data, true);
+        $query = "SELECT * FROM i18n_words WHERE i18n_id=:id;";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([
+            'id' => $data['id']
+        ]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($result) {
+            $query = "UPDATE i18n_words SET i18n_value=:value WHERE i18n_id=:id";
+            $stmt = $pdo->prepare($query);
+            try {
+                $stmt->execute([
+                    'id' => $data['id'],
+                    'value' => $data['value']
+                ]);
+                http_response_code(201);
+                echo json_encode(["message" => _t("i18n_successfully_updated")]);
+            } catch (PDOException $e) {
+                http_response_code(400);
+                if (strpos($e, "duplicate")) {
+                    echo json_encode(["error" => _t("i18n_duplicate_key_error")]);
+                } else {
+                    echo json_encode(["error" => (string) $e]);
+                }
+            }
+        } else {
+            http_response_code(400);
+            echo json_encode(["error" => _t("i18n_not_found")]);
+        }
         break;
     case "DELETE":
         $id = $_GET['id'] ?? null;
         if ($id !== null) {
+            $query = "SELECT * FROM i18n_words WHERE i18n_id=:id;";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([
+                'id' => $id
+            ]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($result) {
+                $query = "DELETE FROM i18n_words WHERE i18n_id=:id;";
+                $stmt = $pdo->prepare($query);
+                try {
+                    $stmt->execute([
+                        'id' => $id
+                    ]);
+                    echo json_encode(["message" => _t("i18n_successfully_deleted")]);
+                } catch (PDOException $e) {
+                    http_response_code(400);
+                    echo json_encode(["error" => (string) $e]);
+                }
+            } else {
+                http_response_code(400);
+                echo json_encode(["error" => _t("i18n_not_found")]);
+            }
 
         } else {
             http_response_code(400);

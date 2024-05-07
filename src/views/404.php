@@ -1,4 +1,6 @@
-<? http_response_code(404); ?>
+<?
+
+http_response_code(404); ?>
 <!DOCTYPE html>
 
 <html lang="en" class="light-style layout-wide customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="/assets/" data-template="vertical-menu-template">
@@ -51,11 +53,11 @@
     <!-- Error -->
     <div class="container-xxl container-p-y">
         <div class="misc-wrapper">
-            <h2 class="mb-1 mt-4"><? echo _t('404_not_found_title'); ?></h2>
+            <h2 class="mb-1 mt-4"><? echo $i18n->_t('404_not_found_title'); ?></h2>
             <p class="mb-4 mx-2">
-                <? echo _t('404_not_found_message'); ?>
+                <? echo $i18n->_t('404_not_found_message'); ?>
             </p>
-            <a href="/" class="btn btn-primary mb-4"><? echo _t('404_not_found_backtohome'); ?></a>
+            <a href="/" class="btn btn-primary mb-4"><? echo $i18n->_t('404_not_found_backtohome'); ?></a>
             <div class="mt-4">
                 <img src="/assets/img/illustrations/page-misc-error.png" alt="page-misc-error" width="225" class="img-fluid" />
             </div>

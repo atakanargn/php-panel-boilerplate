@@ -1,5 +1,9 @@
 <?
 include ("config.php");
+include ("models/i18n.php");
+
+$i18n = new I18n($pdo, $redisConn);
+
 $view_route = 'views/';
 
 $request = $_SERVER['REQUEST_URI'];

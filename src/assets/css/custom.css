@@ -1,0 +1,16 @@
+.table-100 {
+    width: 100% !important;
+}
+
+table.display {
+    margin: 0 auto !important;
+    width: 100% !important;
+}
+
+.swal2-container {
+    z-index: 100000 !important;
+}
+
+.selected {
+    background-color: rgba(118, 255, 73, 0.2) !important;
+}

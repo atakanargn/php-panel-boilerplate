@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
     <link rel="stylesheet" href="assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="assets/css/demo.css" />
+    <link rel="stylesheet" href="assets/css/custom.css" />
+    <link rel="stylesheet" href="assets/css/sweetalert2.min.css" />
     <link rel="stylesheet" href="assets/vendor/libs/node-waves/node-waves.css" />
     <link rel="stylesheet" href="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
     <script src="assets/vendor/js/helpers.js"></script>
@@ -50,7 +52,7 @@
                     </div>
 
                     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-                        <span style="font-weight:bolder;"><? echo ucfirst_tr(_t($sayfa)); ?></span>
+                        <span style="font-weight:bolder;"><? echo ucfirst_tr($i18n->_t($sayfa)); ?></span>
 
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
                             <!-- User -->
@@ -82,22 +84,7 @@
                                     <li>
                                         <a class="dropdown-item" href="#">
                                             <i class="ti ti-user-check me-2 ti-sm"></i>
-                                            <span class="align-middle">My Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="ti ti-settings me-2 ti-sm"></i>
-                                            <span class="align-middle">Settings</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <span class="d-flex align-items-center align-middle">
-                                                <i class="flex-shrink-0 ti ti-credit-card me-2 ti-sm"></i>
-                                                <span class="flex-grow-1 align-middle">Billing</span>
-                                                <span class="flex-shrink-0 badge badge-center rounded-pill bg-label-danger w-px-20 h-px-20">2</span>
-                                            </span>
+                                            <span class="align-middle"><? echo ucfirst_tr($i18n->_t("my_profile")); ?></span>
                                         </a>
                                     </li>
                                     <li>
@@ -106,7 +93,7 @@
                                     <li>
                                         <a class="dropdown-item" href="#">
                                             <i class="ti ti-logout me-2 ti-sm"></i>
-                                            <span class="align-middle"><? echo ucfirst_tr(_t("logout")); ?></span>
+                                            <span class="align-middle"><? echo ucfirst_tr($i18n->_t("logout")); ?></span>
                                         </a>
                                     </li>
                                 </ul>
